@@ -13,10 +13,9 @@ describe("Unit: Testing Directives", ->
     scope = $rootScope
     $compile(elm)(scope)
     scope.$digest()
-    elm
   )
 
-  it('should contain the text', ->
+  it('should have header as the default element', ->
     inject(($controller) ->
       #scope.$broadcast('addProductData',{title:"TEST DISPLAY NAME", 
                                     #productId: "123", mainImageUrl: "TEST.JPG"});
