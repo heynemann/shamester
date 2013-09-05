@@ -2,8 +2,47 @@ $iconSpritePath: "../images/glyphicons-halflings.png";
 $iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
 
 @import "bootstrap-sass/lib/bootstrap";
+@import "compass/css3";
 
 /* Put your CSS here */
 html, body {
   margin: 20px;
 }
+
+.container {
+    position: relative;
+
+    & > * {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        min-height: 400px;
+    }
+}
+
+.view-animate {
+    &.ng-enter, &.ng-leave {
+        @include transition(all cubic-bezier(0.250, 0.460, 0.450, 0.940) 300ms);
+    }
+
+    &.ng-enter {
+        opacity: 0;
+        left: -1000px;
+
+        &.ng-enter-active {
+            opacity: 1;
+            left: 0;
+        }
+    }
+
+    &.ng-leave{
+        opacity: 1;
+        left: 0;
+
+        &.ng-leave-active {
+            opacity: 0;
+            left: -1000px;
+        }
+    }
+}
+

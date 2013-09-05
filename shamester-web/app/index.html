@@ -28,10 +28,13 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <div class="container" ng-view=""></div>
+        <header></header>
+        <div class="container view-animate" ng-view=""></div>
 
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
 
         <!-- build:js scripts/plugins.js -->
         <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
@@ -59,6 +62,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/directives/header.js"></script>
+        <script src="scripts/controllers/ranking.js"></script>
         <!-- endbuild -->
     </body>
 </html>

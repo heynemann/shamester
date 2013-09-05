@@ -1,0 +1,19 @@
+<div class="ranking-view">
+    <h1>Hall of Fame</h1>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>URL</th>
+                <th>Violations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-ng-repeat="product in products | orderBy:'violations'" data-ng-class="classFor(product.violations)">
+                <td>{{ product.name }}</td>
+                <td>{{ product.url }}></td>
+                <td>{{ product.violations }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
