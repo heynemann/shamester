@@ -1,0 +1,164 @@
+.circular3dG-container {
+    position:relative;
+    width:256px;
+    height:256px;
+    margin: 0 auto;
+}
+
+.circular3dG {
+    position:absolute;
+    background-color:#333333;
+    width:72px;
+    height:72px;
+    -moz-animation-name:bounce_circular3dG;
+    -moz-animation-duration:1.04s;
+    -moz-animation-iteration-count:infinite;
+    -moz-animation-direction:linear;
+    -webkit-animation-name:bounce_circular3dG;
+    -webkit-animation-duration:1.04s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-direction:linear;
+    -ms-animation-name:bounce_circular3dG;
+    -ms-animation-duration:1.04s;
+    -ms-animation-iteration-count:infinite;
+    -ms-animation-direction:linear;
+    -o-animation-name:bounce_circular3dG;
+    -o-animation-duration:1.04s;
+    -o-animation-iteration-count:infinite;
+    -o-animation-direction:linear;
+    border-radius:76px;
+    animation-name:bounce_circular3dG;
+    animation-duration:1.04s;
+    animation-iteration-count:infinite;
+    animation-direction:linear;
+}
+
+.circular3d_1G{
+    left:104px;
+    top:16px;
+    -moz-animation-delay:1.1700000000000002s;
+    -webkit-animation-delay:1.1700000000000002s;
+    -ms-animation-delay:1.1700000000000002s;
+    -o-animation-delay:1.1700000000000002s;
+    animation-delay:1.1700000000000002s;
+}
+
+.circular3d_2G{
+    left:156px;
+    top:60px;
+    -moz-animation-delay:1.04s;
+    -webkit-animation-delay:1.04s;
+    -ms-animation-delay:1.04s;
+    -o-animation-delay:1.04s;
+    animation-delay:1.04s;
+}
+
+.circular3d_3G{
+    left:188px;
+    top:116px;
+    -moz-animation-delay:0.9099999999999999s;
+    -webkit-animation-delay:0.9099999999999999s;
+    -ms-animation-delay:0.9099999999999999s;
+    -o-animation-delay:0.9099999999999999s;
+    animation-delay:0.9099999999999999s;
+}
+
+.circular3d_4G{
+    left:176px;
+    top:172px;
+    -moz-animation-delay:0.78s;
+    -webkit-animation-delay:0.78s;
+    -ms-animation-delay:0.78s;
+    -o-animation-delay:0.78s;
+    animation-delay:0.78s;
+}
+
+.circular3d_5G{
+    left:108px;
+    top:188px;
+    -moz-animation-delay:0.65s;
+    -webkit-animation-delay:0.65s;
+    -ms-animation-delay:0.65s;
+    -o-animation-delay:0.65s;
+    animation-delay:0.65s;
+}
+
+.circular3d_6G{
+    left:20px;
+    top:124px;
+    -moz-animation-delay:0.52s;
+    -webkit-animation-delay:0.52s;
+    -ms-animation-delay:0.52s;
+    -o-animation-delay:0.52s;
+    animation-delay:0.52s;
+}
+
+.circular3d_7G{
+    left:0px;
+    top:36px;
+    -moz-animation-delay:0.39s;
+    -webkit-animation-delay:0.39s;
+    -ms-animation-delay:0.39s;
+    -o-animation-delay:0.39s;
+    animation-delay:0.39s;
+}
+
+.circular3d_8G{
+    left:44px;
+    top:0px;
+    -moz-animation-delay:1.3s;
+    -webkit-animation-delay:1.3s;
+    -ms-animation-delay:1.3s;
+    -o-animation-delay:1.3s;
+    animation-delay:1.3s;
+}
+
+@-moz-keyframes bounce_circular3dG{
+    0% {
+        -moz-transform:scale(1)
+    }
+
+    100% {
+        -moz-transform:scale(.3)
+    }
+}
+
+@-webkit-keyframes bounce_circular3dG{
+    0% {
+        -webkit-transform:scale(1)
+    }
+
+    100% {
+        -webkit-transform:scale(.3)
+    }
+}
+
+@-ms-keyframes bounce_circular3dG{
+    0% {
+        -ms-transform:scale(1)
+    }
+
+    100% {
+        -ms-transform:scale(.3)
+    }
+}
+
+@-o-keyframes bounce_circular3dG{
+    0%{
+        -o-transform:scale(1)
+    }
+
+    100%{
+        -o-transform:scale(.3)
+    }
+}
+
+@keyframes bounce_circular3dG{
+    0%{
+        transform:scale(1)
+    }
+
+    100%{
+        transform:scale(.3)
+    }
+}

@@ -1,5 +1,9 @@
 .ranking-view {
     .ranking-table {
+        th {
+            cursor: pointer;
+        }
+
         .name {
             width: 40%;
         }

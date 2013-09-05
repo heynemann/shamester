@@ -1,15 +1,24 @@
 <div class="ranking-view">
     <h1>Hall of Fame</h1>
-    <table class="table table-striped table-hover ranking-table">
+
+    <form class="form-inline">
+        <label>
+            Product: <input type="text" placeholder="G1, GloboEsporte..." data-ng-model="productName" />
+        </label>
+    </form>
+
+    <div ng-if="!hasResults"><spinner></spinner></div>
+
+    <table class="table table-striped table-hover ranking-table" data-ng-if="hasResults" data-ng-init="order='violations'; reversed=false">
         <thead>
             <tr>
-                <th class="name">Name</th>
-                <th class="url">URL</th>
-                <th class="violations">Violations</th>
+                <th class="name" data-ng-click="order='name'; reversed=!reversed">Name</th>
+                <th class="url" data-ng-click="order='url'; reversed=!reversed">URL</th>
+                <th class="violations" data-ng-click="order='violations'; reversed=!reversed">Violations</th>
             </tr>
         </thead>
         <tbody>
-            <tr data-ng-repeat="product in products | orderBy:'violations'" data-ng-class="classFor(product.violations)">
+            <tr data-ng-repeat="product in products | orderBy:order:reversed" data-ng-class="classFor(product.violations)">
                 <td class="name">{{ product.name }}</td>
                 <td class="url">{{ product.url }}</td>
                 <td class="violations">{{ product.violations }}</td>

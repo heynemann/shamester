@@ -4,6 +4,7 @@ describe 'Controller: RankingCtrl', () ->
 
   # load the controller's module
   beforeEach module 'shamesterApp'
+  beforeEach module 'ngRoute'
 
   RankingCtrl = {}
   scope = {}
@@ -15,5 +16,11 @@ describe 'Controller: RankingCtrl', () ->
       $scope: scope
     }
 
-  it 'should attach a list of awesomeThings to the scope', () ->
-    expect(scope.awesomeThings.length).toBe 3
+  it 'should have 150 items by default', () ->
+    RankingCtrl.updateProducts()
+    expect(scope.products.length).toBe 150
+
+  it 'should have G1 items when filtered', () ->
+    RankingCtrl.updateProducts('G1')
+    expect(scope.products.length).toBe 50
+    expect(scope.products[0].name).toBe "G1"

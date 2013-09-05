@@ -12,13 +12,16 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
         <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" href="bower_components/alertify/themes/alertify.core.css">
+        <link rel="stylesheet" href="bower_components/alertify/themes/alertify.bootstrap.css">
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/header.css">
         <link rel="stylesheet" href="styles/ranking.css">
+        <link rel="stylesheet" href="styles/spinner.css">
         <!-- endbuild -->
     </head>
 
-    <body ng-app="shamesterApp">
+    <body data-ng-app="shamesterApp">
         <!--[if lt IE 7]>
           <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -30,7 +33,7 @@
 
         <!-- Add your site or application content here -->
         <header></header>
-        <div class="container view-animate" ng-view=""></div>
+        <div class="container view-animate" data-ng-view=""></div>
 
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="bower_components/angular/angular.js"></script>
@@ -51,6 +54,7 @@
         <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
         <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
         <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
+        <script src="bower_components/alertify/alertify.js"></script>
         <!-- endbuild -->
 
         <!-- build:js scripts/modules.js -->
@@ -64,6 +68,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/directives/header.js"></script>
         <script src="scripts/controllers/ranking.js"></script>
+        <script src="scripts/directives/spinner.js"></script>
         <!-- endbuild -->
     </body>
 </html>

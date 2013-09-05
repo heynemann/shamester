@@ -20,7 +20,7 @@ describe("Unit: Testing Directives", ->
       #scope.$broadcast('addProductData',{title:"TEST DISPLAY NAME", 
                                     #productId: "123", mainImageUrl: "TEST.JPG"});
       #scope.$digest();
-      expect(elm.text().trim()).toBe("this is the header directive")
+      expect(elm.text().replace(/\s*/g, '')).toBe("Shamester Home Hall of Fame".replace(/\s*/g, ''))
     )
   )
 )

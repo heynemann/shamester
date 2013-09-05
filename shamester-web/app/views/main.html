@@ -1,11 +1,10 @@
 <div class="main-view">
     <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-          <li data-ng-repeat="thing in awesomeThings">{{thing}}</li>
-      </ul>
-      <p>installed.</p>
-      <h3>Enjoy coding! - Yeoman</h3>
+        <h1>Add a new website</h1>
+        <p>Add a website's URL and let Shamester crawl it looking for validation errors.</p>
+        <p>
+            <input class="website-url input-xxlarge" type="text" placeholder="http://www.globo.com" data-ng-model="model.url">
+            <a class="btn btn-primary btn-large" data-ng-click="addUrl()">add website</a>
+        </p>
     </div>
 </div>
