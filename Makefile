@@ -19,8 +19,14 @@ kill_mongo:
 
 mongo: kill_mongo
 	@mkdir -p /tmp/$(mongodatabase)/mongodata
-	@mongod --dbpath /tmp/$(mongodatabase)/mongodata --logpath /tmp/$(mongodatabase)/mongolog --port 6666 --quiet &
-	@sleep 3
+	@mongod --dbpath /tmp/$(mongodatabase)/mongodata --logpath /tmp/$(mongodatabase)/mongolog --port 6680 --quiet &
+	@sleep 5
+
+kill_redis:
+	@ps aux | awk '(/redis-server/ && $$0 !~ /awk/){ system("kill -9 "$$2) }'
+
+redis: kill_redis
+	@redis-server ./redis.conf
 
 restore_mongo:
 	@mongorestore --port 6666 ../dump
@@ -33,5 +39,5 @@ mongo_test: kill_mongo_test
 	@mongod --dbpath /tmp/$(mongodatabase)/mongotestdata --logpath /tmp/$(mongodatabase)/mongotestlog --port 6667 --quiet &
 	@sleep 6
 
-run: mongo
+run: mongo redis
 	@honcho start

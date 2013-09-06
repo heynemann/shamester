@@ -1,3 +1,2 @@
-redis:            redis-server ./redis.conf
-api:              PYTHONPATH=$PYTHONPATH:. shamester-api --debug --conf=shamester_api/config/local.conf
-web:              cd shamester-web && grunt server
+api:              PYTHONPATH=$PYTHONPATH:. shamester-api --debug --conf=shamester_api/config/local.conf --port=3000
+web:              cd shamester-web && grunt watcher

@@ -3,8 +3,19 @@
         <h1>Add a new website</h1>
         <p>Add a website's URL and let Shamester crawl it looking for validation errors.</p>
         <p>
-            <input class="website-url input-xxlarge" type="text" placeholder="http://www.globo.com" data-ng-model="model.url">
-            <a class="btn btn-primary btn-large" data-ng-click="addUrl()">add website</a>
+            <form data-ng-submit="addUrl()">
+                <div
+                    class="control-group"
+                    ng-class="model.url.length == 0 ? 'error' : ''">
+                  <div class="controls">
+                    <input
+                        class="website-url input-xxlarge"
+                        data-ng-model="model.url"
+                        type="text" placeholder="http://www.globo.com">
+                    <a class="btn btn-primary btn-large" data-ng-click="addUrl()">add website</a>
+                  </div>
+                </div>
+            </form>
         </p>
     </div>
 </div>

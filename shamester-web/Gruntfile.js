@@ -55,6 +55,15 @@ module.exports = function (grunt) {
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
+      },
+      dist: {
+        files: [
+          '<%= yeoman.app %>/{,*/}*.html',
+          '.tmp/styles/{,*/}*.css',
+          '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ],
+        tasks: ['build']
       }
     },
     autoprefixer: {
@@ -356,9 +365,18 @@ module.exports = function (grunt) {
       'autoprefixer',
       'connect:livereload',
       'open',
-      'watch'
+      'watch:coffee:coffeeTest:compass:styles:livereload'
     ]);
   });
+
+  grunt.registerTask('watcher', [
+    'clean:server',
+    'concurrent:server',
+    'autoprefixer',
+    'connect:livereload',
+    'build',
+    'watch'
+  ]);
 
   grunt.registerTask('test', [
     'clean:server',
