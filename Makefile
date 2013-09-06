@@ -7,6 +7,8 @@ test: mongo_test
 
 setup:
 	@pip install -U -e .\[tests\]
+	@npm install -g yo
+	@cd shamester-web && npm install
 
 drop_mongo:
 	@rm -rf /tmp/$(mongodatabase)/mongodata
