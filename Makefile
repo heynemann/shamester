@@ -40,4 +40,4 @@ mongo_test: kill_mongo_test
 	@sleep 6
 
 run: mongo redis
-	@honcho start
+	@foreman start

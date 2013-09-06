@@ -12,7 +12,6 @@ tests_require = [
     'tox',
     'ipdb',
     'coveralls',
-    'honcho',
 ]
 
 setup(

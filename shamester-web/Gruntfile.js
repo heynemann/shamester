@@ -63,7 +63,7 @@ module.exports = function (grunt) {
           '{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ],
-        tasks: ['build']
+        tasks: ['buildDev']
       }
     },
     autoprefixer: {
@@ -400,6 +400,16 @@ module.exports = function (grunt) {
     'rev',
     'usemin'
   ]);
+
+  grunt.registerTask('buildDev', [
+    'clean:dist',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'copy:dist',
+    'rev',
+  ]);
+
 
   grunt.registerTask('default', [
     'jshint',
