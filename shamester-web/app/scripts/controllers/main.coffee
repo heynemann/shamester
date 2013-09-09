@@ -1,13 +1,26 @@
 'use strict'
 
 angular.module('shamesterApp')
-  .controller 'MainCtrl', ($scope) ->
+  .controller 'MainCtrl', ($scope, ShamesterApi) ->
+    $scope.creatingWebsite = false
+
     $scope.model = {
       url: ''
     }
 
     $scope.addUrl = ->
+      return if $scope.creatingWebsite
+
       url = $scope.model.url
-      alertify.success(url + " added successfully!") if url? and url != ''
       alertify.error("URL field must be filled!") unless url? and url != ''
-      $scope.model.url = ''
+
+      if url? and url != ''
+        $scope.creatingWebsite = true
+        create = ShamesterApi.createWebsite(url)
+
+        create.then((result) ->
+          $scope.creatingWebsite = false
+          alertify.success(url + " added successfully!") if result.status == 'success'
+          alertify.error(url + " could not be added.") unless result.status == 'success'
+          $scope.model.url = ''
+        )

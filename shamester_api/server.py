@@ -44,7 +44,7 @@ class ShamesterApiServer(Server):
         web_path = abspath(join(dirname(__file__), '..', 'shamester-web', 'dist'))
 
         handlers = [
-            ('/scripts/config-([^/]+).js', ConfigurationHandler),
+            ('/scripts/configuration.js', ConfigurationHandler),
             ('/websites/new/?', NewWebsiteHandler),
             ('/(.*)/?', StaticIndexHandler, {"path": web_path}),
         ]

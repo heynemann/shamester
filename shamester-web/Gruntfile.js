@@ -188,9 +188,9 @@ module.exports = function (grunt) {
     },
     // not used since Uglify task does concat,
     // but still available if needed
-    /*concat: {
+    concat: {
       dist: {}
-    },*/
+    },
     rev: {
       dist: {
         files: {

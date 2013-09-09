@@ -10,21 +10,18 @@ CONFIGURATION_KEYS = [
 
 class ConfigurationHandler(RequestHandler):
 
-    def get(self, environment):
+    def get(self):
         configurations = [
             ".constant('%s', '%s')" % (
-                value,
+                value.lower(),
                 getattr(self.application.config, value)
             )
             for value in CONFIGURATION_KEYS
         ]
 
         template = """
-            (function() {
-              angular.module('configuration')
-                  %s;
-
-            }).call(this);
+          angular.module('configData', [])
+              %s;
         """ % (
             "\n".join(configurations)
         )

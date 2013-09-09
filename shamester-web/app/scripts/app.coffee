@@ -1,6 +1,6 @@
 'use strict'
 
-angular.module('shamesterApp', ['ngRoute', 'ngAnimate'])
+angular.module('shamesterApp', ['ngRoute', 'ngAnimate', 'configData'])
   .config ($routeProvider, $locationProvider) ->
     $locationProvider.html5Mode(true)
 
