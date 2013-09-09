@@ -2,6 +2,8 @@
 
 angular.module('shamesterApp', ['ngRoute', 'ngAnimate'])
   .config ($routeProvider, $locationProvider) ->
+    $locationProvider.html5Mode(true)
+
     $routeProvider
       .when '/ranking',
         templateUrl: 'views/ranking.html',
