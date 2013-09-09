@@ -13,29 +13,23 @@ from shamester_api.handlers.configuration_handler import ConfigurationHandler
 
 
 SITE_PATHS = [
-    '',
-    '/',
-    '/ranking'
+    'ranking'
 ]
 
 
 class StaticIndexHandler(tornado.web.StaticFileHandler):
     @classmethod
     def get_absolute_path(cls, root, path):
-        if path in SITE_PATHS:
+        if path == '/' or path == '':
             path = "index.html"
 
         return super(StaticIndexHandler, cls).get_absolute_path(root, path.lstrip('/'))
 
     def get(self, path, include_body=True):
-        self.path = self.parse_url_path(path)
-        absolute_path = self.get_absolute_path(self.root, self.path)
-        self.absolute_path = self.validate_absolute_path(self.root, absolute_path)
-        if self.absolute_path is None:
-            return
-
         if path in SITE_PATHS:
-            self.render(absolute_path, environment=self.application.config.ENVIRONMENT)
+            absolute_path = self.get_absolute_path(self.root, "index.html")
+            self.absolute_path = absolute_path
+            self.write(self.render_string(absolute_path, environment=self.application.config.ENVIRONMENT))
             return
 
         return super(StaticIndexHandler, self).get(path, include_body)
