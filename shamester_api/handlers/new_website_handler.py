@@ -4,6 +4,7 @@
 from tornado.web import RequestHandler, asynchronous
 import tornado.gen
 import motor
+from ujson import loads, dumps
 
 from shamester_api.models import Website
 
@@ -16,15 +17,24 @@ class NewWebsiteHandler(RequestHandler):
     @asynchronous
     @tornado.gen.coroutine
     def post(self):
-        url = self.get_param('url')
+        website = loads(self.request.body)
+        if website.get('url', None) is None:
+            self.write(dumps({
+                "success": False,
+                "reason": "Url is required!"
+            }))
 
-        website = Website(url=url)
+        website = Website(url=website['url'])
 
         website_data = website.to_dict()
 
-        yield motor.Op(self.websites.insert, website_data)
+        new_website = yield motor.Op(self.websites.insert, website_data)
 
         self.application.redis.publish("new-website", website_data)
 
-        self.write("OK")
+        self.write(dumps({
+            "success": True,
+            "websiteId": str(new_website)
+        }))
+
         self.finish()

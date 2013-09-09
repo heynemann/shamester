@@ -9,6 +9,7 @@ from cow.plugins.motor_plugin import MotorPlugin
 from cow.plugins.redis_plugin import RedisPlugin
 
 from shamester_api.handlers.new_website_handler import NewWebsiteHandler
+from shamester_api.handlers.hall_of_shame_handler import HallOfShameHandler
 from shamester_api.handlers.configuration_handler import ConfigurationHandler
 
 
@@ -45,7 +46,8 @@ class ShamesterApiServer(Server):
 
         handlers = [
             ('/scripts/configuration.js', ConfigurationHandler),
-            ('/websites/new/?', NewWebsiteHandler),
+            ('/websites/?', NewWebsiteHandler),
+            ('/websites/hall/?', HallOfShameHandler),
             ('/(.*)/?', StaticIndexHandler, {"path": web_path}),
         ]
 

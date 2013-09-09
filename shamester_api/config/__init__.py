@@ -16,3 +16,4 @@ Config.define('REDISPORT', 7777, "Database configuration", "Database")
 
 Config.define('WEB_ROOT_PATH', web_root_path, "Root path for the web app.", "Web")
 Config.define('ENVIRONMENT', 'local', "Defines the javascript include to be used.", "Web")
+Config.define('API_URL', 'http://localhost:3000/', "Defines the base URL for the API.", "Web")

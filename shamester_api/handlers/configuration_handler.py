@@ -5,6 +5,7 @@ from tornado.web import RequestHandler
 
 CONFIGURATION_KEYS = [
     'ENVIRONMENT',
+    'API_URL',
 ]
 
 

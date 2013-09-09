@@ -24,11 +24,17 @@ class Website(object):
 
     @classmethod
     def to_timestamp(cls, date):
+        if date is None:
+            return None
+
         dt = date.strftime(DATE_FORMAT)
         return dt
 
     @classmethod
     def from_timestamp(cls, timestamp):
+        if timestamp is None:
+            return None
+
         return datetime.strptime(str(timestamp), DATE_FORMAT)
 
     def to_dict(self):
