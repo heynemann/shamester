@@ -37,7 +37,6 @@ class ShamesterWorkerServer(object):
     def run(self):
         try:
             while True:
-                
                 websites = self.check_new_websites()
                 for website in websites:
                     logging.debug("Processing [%s]" % website)
