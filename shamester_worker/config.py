@@ -1,19 +1,10 @@
-import ConfigParser
+import os
+from derpconf.config import Config, verify_config
 
 
-class Config(object):
-    config = None
-    defaults = {
-                "sleep_time": "60"
-            }
-
-    def __init__(self, filename):
-        self.config = ConfigParser.SafeConfigParser(defaults=self.defaults)
-        self.config.read(filename)
+Config.define('WORKER_SLEEP_TIME', 60, "Main loop sleep time", 'Worker')
 
 
-    def getint(self, option):
-        try:
-            return self.config.getint('MAIN', option)
-        except:
-            return self.config.getint('DEFAULT', option)
+def verify_and_load(config_file):
+	verify_config(config_file)
+	return Config.load(config_file)
