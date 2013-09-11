@@ -17,6 +17,7 @@ LOGS = {
 
 class ShamesterWorkerServer(object):
     config = None
+    validators = set()
 
 
     def __init__(self, opt):
@@ -33,6 +34,12 @@ class ShamesterWorkerServer(object):
             datefmt=self.config.get("LOG_DATE_FORMAT")
         )
 
+        self.validators.add("validators.base.ValidatorBase")
+        for validator in self.config.get("VALIDATORS"):
+            self.validators.add(validator)
+
+        logging.debug("Will validate using %s" % self.validators)
+
 
     def run(self):
         try:
@@ -40,8 +47,10 @@ class ShamesterWorkerServer(object):
                 websites = self.check_new_websites()
                 for website in websites:
                     logging.debug("Processing [%s]" % website)
+                    self.validate_website(website)
 
-                sleep_for = self.config.get('WORKER_SLEEP_TIME')
+
+                sleep_for = self.config.get("WORKER_SLEEP_TIME")
                 logging.debug("Nothing more to do. Will sleep a little bit... (%ss)" % sleep_for)
                 time.sleep(sleep_for)
 
@@ -55,6 +64,24 @@ class ShamesterWorkerServer(object):
         return ["www.globo.com", "g1.globo.com"]
 
 
+    def validate_website(self, website):
+        for validator_full_name in self.validators:
+
+            validator = self.new_validator(validator_full_name, website)
+            if validator:
+                validator.validate()
+
+    def new_validator(self, validator_full_name, website):
+        try:
+            module_name, class_name = validator_full_name.rsplit('.', 1)
+            
+            module = __import__(module_name, globals(), locals(), class_name)
+            return getattr(module, class_name)(website)
+
+        except AttributeError:
+            logging.warning("Could not instantiate [%s]. Ignoring." % validator_full_name)
+            return None
+            
 
 def main():
     parser = OptionParser()
