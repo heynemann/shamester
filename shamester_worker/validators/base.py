@@ -1,17 +1,44 @@
 import logging
 import requests
+from requests.exceptions import MissingSchema, ConnectionError, Timeout
+from requests import Response
+from config import Config
 
 class ValidatorBase(object):
-    address = None
+    website = None
+    config = None
 
-    def __init__(self, address):
-        self.address = address
+    def __init__(self, website):
+        self.website = website
+        self.config = Config()
 
     def _get(self, address):
-        requests.get(address)
+        response = Response()
+
+        try:
+            response = requests.get(address, timeout=self.config.get("TIMEOUT"))
+        except MissingSchema:
+            self._add_violations("Missing schema for address [%s]" % address)
+
+        except ConnectionError:
+            self._add_violations("Address [%s] not found" % address)
+
+        except Timeout:
+            self._add_violations("Request timeout for [%s]" % address)
+
+        finally:
+            return response
+
 
     def validate(self):
-    	logging.debug("Validating [%s]" % self.address)
+        logging.debug("Validating [%s]" % self.website)
 
+        response = self._get(self.website)
+
+
+        if response.status_code == 404:
+            self._add_violations("404 for [%s]" % self.website)
+
+    	
     def _add_violations(self, message):
-        pass
+        logging.warn("VIOLATION - %s" % message)

@@ -61,7 +61,7 @@ class ShamesterWorkerServer(object):
 
     def check_new_websites(self):
         logging.debug("Checking for new websites...")
-        return ["www.globo.com", "g1.globo.com"]
+        return ["http://www.globo.com", "g1.globo.com", "http://timeout.com", "http://globo.com/404"]
 
 
     def validate_website(self, website):
@@ -81,7 +81,7 @@ class ShamesterWorkerServer(object):
         except AttributeError:
             logging.warning("Could not instantiate [%s]. Ignoring." % validator_full_name)
             return None
-            
+
 
 def main():
     parser = OptionParser()

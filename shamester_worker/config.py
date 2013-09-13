@@ -11,6 +11,7 @@ Config.define("LOG_DATE_FORMAT", "%Y-%m-%d %H:%M:%S",
     "Date Format to be used when writing log messages.", "Logging")
 
 Config.define("VALIDATORS", set(), "List of classes to validate a website", "Validators")
+Config.define("TIMEOUT", 1, "Http Timeout (in seconds)", "Validators")
 
 def verify_and_load(config_file):
 	verify_config(config_file)
