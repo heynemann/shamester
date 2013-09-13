@@ -78,8 +78,9 @@ class ShamesterWorkerServer(object):
             module = __import__(module_name, globals(), locals(), class_name)
             return getattr(module, class_name)(website)
 
-        except AttributeError:
-            logging.warning("Could not instantiate [%s]. Ignoring." % validator_full_name)
+        except AttributeError, e:
+            logging.warning("Could not instantiate [%s]. Ignoring. (%s)" % (validator_full_name, e))
+            
             return None
 
 
